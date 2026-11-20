@@ -24,35 +24,37 @@ type BoltTree = {
 
 const CONFIG = {
   desktop: {
-    minInterval: 3000,
-    maxInterval: 8000,
+    minInterval: 4000,
+    maxInterval: 9000,
     dpr: 2,
-    branchMin: 2,
-    branchMax: 4,
+    branchMin: 3,
+    branchMax: 6,
     subdivisions: 6,
-    branchDepth: 3,
+    branchDepth: 4,
     skipOuterGlow: false,
+    scale: 1.2,
   },
   mobile: {
-    minInterval: 5000,
-    maxInterval: 10000,
+    minInterval: 6000,
+    maxInterval: 11000,
     dpr: 1.5,
     branchMin: 2,
-    branchMax: 3,
+    branchMax: 4,
     subdivisions: 5,
-    branchDepth: 2,
+    branchDepth: 3,
     skipOuterGlow: true,
+    scale: 1.05,
   },
-  revealMin: 60,
-  revealMax: 140,
-  flashMin: 200,
-  flashMax: 500,
-  fadeMin: 120,
-  fadeMax: 260,
+  revealMin: 140,
+  revealMax: 240,
+  flashMin: 1000,
+  flashMax: 1200,
+  fadeMin: 220,
+  fadeMax: 320,
   pulsesMin: 2,
-  pulsesMax: 4,
+  pulsesMax: 3,
   secondBoltChance: 0.3,
-  roughness: 0.24,
+  roughness: 0.27,
 } as const
 
 const PARTICLES = [
@@ -82,8 +84,8 @@ function clamp(value: number, min: number, max: number) {
 
 function clampPoint(point: Point, width: number, height: number): Point {
   return {
-    x: clamp(point.x, -12, width + 12),
-    y: clamp(point.y, -32, height * 0.92),
+    x: clamp(point.x, -20, width + 20),
+    y: clamp(point.y, -80, height * 0.94),
   }
 }
 
@@ -172,7 +174,7 @@ function createBolt(width: number, height: number, mobile: boolean): BoltTree {
 
   const start: Point =
     Math.random() < 0.8
-      ? { x: random(0.12, 0.88) * width, y: random(-28, 8) }
+      ? { x: random(0.08, 0.92) * width, y: random(-70, -10) }
       : {
           x:
             (Math.random() < 0.5
@@ -183,11 +185,11 @@ function createBolt(width: number, height: number, mobile: boolean): BoltTree {
 
   const target: Point = {
     x: clamp(
-      start.x + (Math.random() - 0.5) * width * 0.34,
-      width * 0.08,
-      width * 0.92,
+      start.x + (Math.random() - 0.5) * width * 0.76,
+      width * 0.04,
+      width * 0.96,
     ),
-    y: height * random(0.45, 0.76),
+    y: height * random(0.65, 0.9),
   }
 
   const points = midpointPath(
@@ -201,13 +203,13 @@ function createBolt(width: number, height: number, mobile: boolean): BoltTree {
   const branchCount = Math.floor(random(cfg.branchMin, cfg.branchMax + 1))
 
   for (let index = 0; index < branchCount; index += 1) {
-    const originIndex = Math.floor(points.length * random(0.2, 0.72))
+    const originIndex = Math.floor(points.length * random(0.15, 0.8))
     const origin = points[originIndex]
     const remaining = Math.max(60, target.y - origin.y)
     trunk.branches.push(
       createBranch(
         origin,
-        remaining * random(0.28, 0.55),
+        remaining * random(0.38, 0.65),
         Math.random() < 0.5 ? 1 : -1,
         cfg.branchDepth,
         random(0.42, 0.62),
@@ -234,36 +236,37 @@ function renderNode(
   ctx: CanvasRenderingContext2D,
   node: BoltNode,
   skipOuterGlow: boolean,
+  scale: number,
 ) {
   const passes = [
     {
       color: `rgba(99, 102, 241, ${0.13 * node.alpha})`,
-      width: 8 * node.width,
-      blur: 30,
+      width: 8 * node.width * scale,
+      blur: 30 * scale,
       glow: "rgba(139, 92, 246, 0.9)",
     },
     {
       color: `rgba(139, 92, 246, ${0.3 * node.alpha})`,
-      width: 4.5 * node.width,
-      blur: 20,
+      width: 4.5 * node.width * scale,
+      blur: 20 * scale,
       glow: "rgba(139, 92, 246, 0.9)",
     },
     {
       color: `rgba(168, 85, 247, ${0.72 * node.alpha})`,
-      width: 2.3 * node.width,
-      blur: 13,
+      width: 2.3 * node.width * scale,
+      blur: 13 * scale,
       glow: "rgba(168, 85, 247, 0.9)",
     },
     {
       color: `rgba(192, 132, 252, ${0.88 * node.alpha})`,
-      width: 1.15 * node.width,
-      blur: 8,
+      width: 1.15 * node.width * scale,
+      blur: 8 * scale,
       glow: "rgba(192, 132, 252, 0.9)",
     },
     {
       color: `rgba(243, 232, 255, ${0.95 * node.alpha})`,
-      width: 0.6 * node.width,
-      blur: 5,
+      width: 0.6 * node.width * scale,
+      blur: 5 * scale,
       glow: "rgba(243, 232, 255, 0.9)",
     },
   ]
@@ -279,7 +282,7 @@ function renderNode(
   })
 
   for (const branch of node.branches) {
-    renderNode(ctx, branch, skipOuterGlow)
+    renderNode(ctx, branch, skipOuterGlow, scale)
   }
 }
 
@@ -405,7 +408,7 @@ export default function PurpleLightningBackground() {
 
     function drawLeader(y: number, alpha: number) {
       const point = pointAtY(trunkPoints, y)
-      const radius = Math.max(26, Math.min(width, height) * 0.06)
+      const radius = Math.max(34, Math.min(width, height) * 0.085)
       const glow = ctx.createRadialGradient(
         point.x,
         point.y,
@@ -471,7 +474,7 @@ export default function PurpleLightningBackground() {
       const fadeStart = flashDuration - fadeDuration
       const envelope =
         elapsed < fadeStart ? 1 : clamp(1 - (elapsed - fadeStart) / fadeDuration, 0, 1)
-      const flicker = 0.58 + 0.42 * Math.abs(Math.sin(progress * Math.PI * pulses))
+      const flicker = 0.72 + 0.28 * Math.abs(Math.sin(progress * Math.PI * pulses))
       const attack = clamp(elapsed / 28, 0, 1)
       const alpha = envelope * flicker * attack
 
@@ -495,10 +498,10 @@ export default function PurpleLightningBackground() {
       offCtx.globalCompositeOperation = "lighter"
       offCtx.lineCap = "round"
       offCtx.lineJoin = "round"
-      renderNode(offCtx, bolt.trunk, cfg.skipOuterGlow)
+      renderNode(offCtx, bolt.trunk, cfg.skipOuterGlow, cfg.scale)
       if (secondary) {
         offCtx.globalAlpha = 0.5
-        renderNode(offCtx, secondary.trunk, true)
+        renderNode(offCtx, secondary.trunk, true, cfg.scale)
       }
       offCtx.restore()
 

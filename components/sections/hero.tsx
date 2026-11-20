@@ -52,7 +52,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(9,9,15,0.02) 0%, rgba(9,9,15,0.22) 55%, rgba(9,9,15,0.72) 88%, #09090F 100%)",
+            "linear-gradient(180deg, rgba(9,9,15,0.02) 0%, rgba(9,9,15,0.16) 55%, rgba(9,9,15,0.66) 88%, #09090F 100%)",
         }}
         aria-hidden="true"
       />
