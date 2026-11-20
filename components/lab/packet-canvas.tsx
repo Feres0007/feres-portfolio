@@ -75,7 +75,7 @@ export default function PacketCanvas({ className }: { className?: string }) {
 
           const alpha = (1 - distance / maxDistance) * 0.2
           ctx.beginPath()
-          ctx.strokeStyle = `rgba(0, 255, 157, ${alpha})`
+          ctx.strokeStyle = `rgba(234, 88, 12, ${alpha})`
           ctx.lineWidth = 0.6
           ctx.moveTo(a.x, a.y)
           ctx.lineTo(b.x, b.y)
@@ -86,11 +86,11 @@ export default function PacketCanvas({ className }: { className?: string }) {
             const px = a.x + (b.x - a.x) * progress
             const py = a.y + (b.y - a.y) * progress
             ctx.beginPath()
-            ctx.fillStyle = "rgba(0, 255, 157, 0.22)"
+            ctx.fillStyle = "rgba(234, 88, 12, 0.22)"
             ctx.arc(px, py, 4, 0, Math.PI * 2)
             ctx.fill()
             ctx.beginPath()
-            ctx.fillStyle = "rgba(0, 255, 157, 0.9)"
+            ctx.fillStyle = "rgba(234, 88, 12, 0.9)"
             ctx.arc(px, py, 1.25, 0, Math.PI * 2)
             ctx.fill()
           }
@@ -100,14 +100,14 @@ export default function PacketCanvas({ className }: { className?: string }) {
       for (const node of nodes) {
         ctx.beginPath()
         ctx.fillStyle = node.accent
-          ? "rgba(0, 229, 255, 0.8)"
-          : "rgba(125, 255, 207, 0.6)"
+          ? "rgba(30, 58, 138, 0.8)"
+          : "rgba(234, 88, 12, 0.45)"
         ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2)
         ctx.fill()
 
         if (node.accent) {
           ctx.beginPath()
-          ctx.strokeStyle = "rgba(0, 229, 255, 0.25)"
+          ctx.strokeStyle = "rgba(30, 58, 138, 0.25)"
           ctx.lineWidth = 0.6
           ctx.arc(node.x, node.y, node.r + 5, 0, Math.PI * 2)
           ctx.stroke()
@@ -123,8 +123,8 @@ export default function PacketCanvas({ className }: { className?: string }) {
           pointer.y,
           150,
         )
-        gradient.addColorStop(0, "rgba(0, 255, 157, 0.065)")
-        gradient.addColorStop(1, "rgba(0, 255, 157, 0)")
+        gradient.addColorStop(0, "rgba(234, 88, 12, 0.065)")
+        gradient.addColorStop(1, "rgba(234, 88, 12, 0)")
         ctx.fillStyle = gradient
         ctx.fillRect(pointer.x - 150, pointer.y - 150, 300, 300)
       }

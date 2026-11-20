@@ -43,7 +43,7 @@ export default function Leadership() {
                     className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 opacity-40"
                     style={{
                       background:
-                        "radial-gradient(circle, rgba(0,229,255,0.14), transparent 68%)",
+                        "radial-gradient(circle, rgba(30, 58, 138,0.14), transparent 68%)",
                     }}
                     aria-hidden="true"
                   />
@@ -53,7 +53,7 @@ export default function Leadership() {
                     </span>
                     <span className="h-px w-6 bg-line" aria-hidden="true" />
                     <span className="text-dim">{entry.period}</span>
-                    <span className="ml-auto inline-flex items-center gap-2 text-signal">
+                    <span className="ml-auto inline-flex items-center gap-2 text-signal-strong">
                       <i className="led" aria-hidden="true" />
                       Member
                     </span>
@@ -64,7 +64,7 @@ export default function Leadership() {
                       <h3 className="font-sans text-2xl font-medium tracking-[-0.03em] text-silk md:text-3xl">
                         {entry.organisation}
                       </h3>
-                      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal">
+                      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal-strong">
                         {entry.role}
                       </p>
                     </div>
@@ -123,7 +123,7 @@ export default function Leadership() {
                   AI &amp; Telecommunications Engineering student at ENIT,
                   specializing in I3C.
                 </p>
-                <p className="mt-3 inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal">
+                <p className="mt-3 inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal-strong">
                   <i className="led" aria-hidden="true" />
                   {profile.availability}
                 </p>
@@ -133,7 +133,7 @@ export default function Leadership() {
                       "Conversation — Feres Boubakri",
                       "Hi Feres,\n\nI would like to discuss a role or collaboration.\n",
                     )}
-                    className="group inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal"
+                    className="group inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal-strong"
                   >
                     Open a conversation
                     <ArrowUpRight

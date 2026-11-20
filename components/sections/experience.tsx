@@ -49,7 +49,7 @@ export default function Experience() {
                 <Reveal key={entry.company} delay={index * 0.08}>
                   <article className="relative pl-8 md:pl-10">
                     <span
-                      className="absolute left-0 top-7 h-2.5 w-2.5 rounded-full border border-signal bg-ink shadow-[0_0_10px_rgba(0,255,157,0.35)]"
+                      className="absolute left-0 top-7 h-2.5 w-2.5 rounded-full border border-signal bg-ink shadow-[0_0_10px_rgba(234, 88, 12,0.35)]"
                       aria-hidden="true"
                     />
 
@@ -59,9 +59,9 @@ export default function Experience() {
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <span className="text-silk">{entry.period}</span>
-                        <span className="h-1 w-1 rounded-full bg-wire" aria-hidden="true" />
+                        <span className="h-1 w-1 rounded-full bg-border" aria-hidden="true" />
                         <span className="text-dim">{entry.location}</span>
-                        <span className="ml-auto inline-flex items-center gap-2 text-signal">
+                        <span className="ml-auto inline-flex items-center gap-2 text-signal-strong">
                           <i className="led" aria-hidden="true" />
                           {entry.status}
                         </span>
@@ -70,7 +70,7 @@ export default function Experience() {
                       <h3 className="mt-4 font-sans text-2xl font-medium leading-tight tracking-[-0.03em] text-silk md:text-3xl">
                         {entry.role}
                       </h3>
-                      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal">
+                      <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal-strong">
                         {entry.company}
                       </p>
 
@@ -101,7 +101,7 @@ export default function Experience() {
                           </p>
                           <a
                             href={requestHref}
-                            className="mt-2 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal"
+                            className="mt-2 inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal-strong"
                           >
                             Request details
                             <ArrowUpRight className="h-3 w-3" aria-hidden="true" />

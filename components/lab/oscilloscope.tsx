@@ -36,7 +36,7 @@ export default function Oscilloscope({ className }: { className?: string }) {
       if (!width || !height) return
       ctx.clearRect(0, 0, width, height)
 
-      ctx.strokeStyle = "rgba(41, 52, 61, 0.55)"
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.45)"
       ctx.lineWidth = 0.5
       for (let x = 0; x < width; x += 24) {
         ctx.beginPath()
@@ -51,7 +51,7 @@ export default function Oscilloscope({ className }: { className?: string }) {
         ctx.stroke()
       }
 
-      ctx.strokeStyle = "rgba(0, 255, 157, 0.16)"
+      ctx.strokeStyle = "rgba(234, 88, 12, 0.16)"
       ctx.beginPath()
       ctx.moveTo(0, height / 2)
       ctx.lineTo(width, height / 2)
@@ -61,7 +61,7 @@ export default function Oscilloscope({ className }: { className?: string }) {
       const amp = height * 0.22
 
       ctx.beginPath()
-      ctx.strokeStyle = "rgba(0, 255, 157, 0.9)"
+      ctx.strokeStyle = "rgba(234, 88, 12, 0.9)"
       ctx.lineWidth = 1.3
       for (let x = 0; x <= width; x += 2) {
         const y =
@@ -74,7 +74,7 @@ export default function Oscilloscope({ className }: { className?: string }) {
       ctx.stroke()
 
       ctx.beginPath()
-      ctx.strokeStyle = "rgba(0, 229, 255, 0.65)"
+      ctx.strokeStyle = "rgba(30, 58, 138, 0.65)"
       ctx.lineWidth = 1
       for (let x = 0; x <= width; x += 2) {
         const y =
@@ -88,8 +88,8 @@ export default function Oscilloscope({ className }: { className?: string }) {
 
       const scanX = (time * 0.08) % width
       const gradient = ctx.createLinearGradient(scanX - 30, 0, scanX, 0)
-      gradient.addColorStop(0, "rgba(0, 255, 157, 0)")
-      gradient.addColorStop(1, "rgba(0, 255, 157, 0.16)")
+      gradient.addColorStop(0, "rgba(234, 88, 12, 0)")
+      gradient.addColorStop(1, "rgba(234, 88, 12, 0.16)")
       ctx.fillStyle = gradient
       ctx.fillRect(scanX - 30, 0, 30, height)
     }

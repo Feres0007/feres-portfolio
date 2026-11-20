@@ -50,7 +50,7 @@ export default function Education() {
                   <h3 className="font-sans text-2xl font-medium leading-tight tracking-[-0.03em] text-silk">
                     {entry.school}
                   </h3>
-                  <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal">
+                  <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-signal-strong">
                     {entry.degree}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-dim">

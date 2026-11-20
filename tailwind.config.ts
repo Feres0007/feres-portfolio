@@ -36,8 +36,8 @@ const config: Config = {
           foreground: "var(--silk)",
         },
         destructive: {
-          DEFAULT: "#ff6568",
-          foreground: "#07110f",
+          DEFAULT: "#DC2626",
+          foreground: "#FFFFFF",
         },
         muted: {
           DEFAULT: "var(--sub-2)",
@@ -63,6 +63,7 @@ const config: Config = {
         wire: "var(--wire)",
         gold: "var(--gold)",
         signal: "var(--signal)",
+        "signal-strong": "var(--signal-strong)",
         "on-signal": "var(--on-signal)",
         silk: "var(--silk)",
         dim: "var(--dim)",
@@ -84,8 +85,8 @@ const config: Config = {
           to: { height: "0" },
         },
         led: {
-          "0%, 100%": { opacity: "1", boxShadow: "0 0 0 0 rgba(0,255,157,.45)" },
-          "50%": { opacity: ".55", boxShadow: "0 0 10px 2px rgba(0,255,157,.18)" },
+          "0%, 100%": { opacity: "1", boxShadow: "0 0 0 0 rgba(234,88,12,.45)" },
+          "50%": { opacity: ".55", boxShadow: "0 0 10px 2px rgba(234,88,12,.18)" },
         },
         scan: {
           "0%": { transform: "translateY(-100%)" },

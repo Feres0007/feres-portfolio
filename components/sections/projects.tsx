@@ -75,7 +75,7 @@ export default function Projects() {
                   className={cn(
                     "inline-flex items-center gap-2 border px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] transition-colors",
                     active
-                      ? "border-signal bg-signal text-on-signal"
+                      ? "border-signal-strong bg-signal-strong text-on-signal"
                       : "border-line bg-panel text-dim hover:border-wire hover:text-silk",
                   )}
                 >
@@ -123,7 +123,7 @@ export default function Projects() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal"
+            className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors hover:text-signal-strong"
           >
             Discuss a project
             <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
