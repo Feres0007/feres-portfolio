@@ -82,7 +82,7 @@ export default function BootScreen() {
             className="pointer-events-none absolute inset-0 opacity-60"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px)",
+                "linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px)",
               backgroundSize: "40px 40px",
             }}
             aria-hidden="true"

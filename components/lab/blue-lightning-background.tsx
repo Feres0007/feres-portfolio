@@ -314,34 +314,34 @@ function renderNode(
 ) {
   const passes = [
     {
-      color: `rgba(99, 102, 241, ${0.13 * node.alpha})`,
+      color: `rgba(29, 78, 216, ${0.13 * node.alpha})`,
       width: 8 * node.width * scale,
       blur: 30 * scale,
-      glow: "rgba(139, 92, 246, 0.9)",
+      glow: "rgba(37, 99, 235, 0.9)",
     },
     {
-      color: `rgba(139, 92, 246, ${0.3 * node.alpha})`,
+      color: `rgba(59, 130, 246, ${0.3 * node.alpha})`,
       width: 4.5 * node.width * scale,
       blur: 20 * scale,
-      glow: "rgba(139, 92, 246, 0.9)",
+      glow: "rgba(59, 130, 246, 0.9)",
     },
     {
-      color: `rgba(168, 85, 247, ${0.72 * node.alpha})`,
+      color: `rgba(96, 165, 250, ${0.72 * node.alpha})`,
       width: 2.3 * node.width * scale,
       blur: 13 * scale,
-      glow: "rgba(168, 85, 247, 0.9)",
+      glow: "rgba(96, 165, 250, 0.9)",
     },
     {
-      color: `rgba(192, 132, 252, ${0.88 * node.alpha})`,
+      color: `rgba(147, 197, 253, ${0.88 * node.alpha})`,
       width: 1.15 * node.width * scale,
       blur: 8 * scale,
-      glow: "rgba(192, 132, 252, 0.9)",
+      glow: "rgba(147, 197, 253, 0.9)",
     },
     {
-      color: `rgba(243, 232, 255, ${0.95 * node.alpha})`,
+      color: `rgba(240, 249, 255, ${0.96 * node.alpha})`,
       width: 0.6 * node.width * scale,
       blur: 5 * scale,
-      glow: "rgba(243, 232, 255, 0.9)",
+      glow: "rgba(240, 249, 255, 0.9)",
     },
   ]
 
@@ -377,7 +377,7 @@ function pointAtY(points: Point[], y: number): Point {
   return points[points.length - 1]
 }
 
-export default function PurpleLightningBackground() {
+export default function BlueLightningBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -549,15 +549,15 @@ export default function PurpleLightningBackground() {
         centerY,
         radius,
       )
-      glow.addColorStop(0, `rgba(139, 92, 246, ${0.12 * alpha})`)
-      glow.addColorStop(0.45, `rgba(99, 102, 241, ${0.05 * alpha})`)
-      glow.addColorStop(1, "rgba(139, 92, 246, 0)")
+      glow.addColorStop(0, `rgba(37, 99, 235, ${0.12 * alpha})`)
+      glow.addColorStop(0.45, `rgba(56, 189, 248, ${0.05 * alpha})`)
+      glow.addColorStop(1, "rgba(37, 99, 235, 0)")
 
       ctx.save()
       ctx.globalCompositeOperation = "lighter"
       ctx.fillStyle = glow
       ctx.fillRect(0, 0, width, height)
-      ctx.fillStyle = `rgba(168, 85, 247, ${0.03 * alpha})`
+      ctx.fillStyle = `rgba(56, 189, 248, ${0.03 * alpha})`
       ctx.fillRect(0, 0, width, height)
       ctx.restore()
     }
@@ -573,9 +573,9 @@ export default function PurpleLightningBackground() {
         point.y,
         radius,
       )
-      glow.addColorStop(0, `rgba(243, 232, 255, ${0.5 * alpha})`)
-      glow.addColorStop(0.35, `rgba(192, 132, 252, ${0.24 * alpha})`)
-      glow.addColorStop(1, "rgba(139, 92, 246, 0)")
+      glow.addColorStop(0, `rgba(240, 249, 255, ${0.5 * alpha})`)
+      glow.addColorStop(0.35, `rgba(96, 165, 250, ${0.24 * alpha})`)
+      glow.addColorStop(1, "rgba(37, 99, 235, 0)")
 
       ctx.save()
       ctx.globalCompositeOperation = "lighter"
@@ -583,7 +583,7 @@ export default function PurpleLightningBackground() {
       ctx.fillRect(point.x - radius, point.y - radius, radius * 2, radius * 2)
       ctx.beginPath()
       ctx.arc(point.x, point.y, 1.6, 0, Math.PI * 2)
-      ctx.fillStyle = `rgba(243, 232, 255, ${0.8 * alpha})`
+      ctx.fillStyle = `rgba(240, 249, 255, ${0.8 * alpha})`
       ctx.fill()
       ctx.restore()
     }
@@ -713,18 +713,18 @@ export default function PurpleLightningBackground() {
   }, [])
 
   return (
-    <div className="purple-atmosphere" aria-hidden="true">
-      <div className="purple-atmosphere__cloud purple-atmosphere__cloud--one" />
-      <div className="purple-atmosphere__cloud purple-atmosphere__cloud--two" />
-      <div className="purple-atmosphere__cloud purple-atmosphere__cloud--three" />
-      <div className="purple-atmosphere__particles">
+    <div className="blue-atmosphere" aria-hidden="true">
+      <div className="blue-atmosphere__cloud blue-atmosphere__cloud--one" />
+      <div className="blue-atmosphere__cloud blue-atmosphere__cloud--two" />
+      <div className="blue-atmosphere__cloud blue-atmosphere__cloud--three" />
+      <div className="blue-atmosphere__particles">
         {PARTICLES.map((particle, index) => (
           <span
             key={index}
             className={
               particle.blue
-                ? "purple-particle purple-particle--blue"
-                : "purple-particle"
+                ? "blue-particle blue-particle--blue"
+                : "blue-particle"
             }
             style={{
               left: `${particle.x}%`,
@@ -737,7 +737,7 @@ export default function PurpleLightningBackground() {
           />
         ))}
       </div>
-      <canvas ref={canvasRef} className="purple-atmosphere__canvas" />
+      <canvas ref={canvasRef} className="blue-atmosphere__canvas" />
     </div>
   )
 }

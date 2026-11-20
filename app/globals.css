@@ -5,19 +5,19 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --sub: #09090F;
-    --sub-2: #12101F;
-    --sub-3: #251044;
-    --border: #2A1B4A;
-    --trace: #1E1238;
-    --wire: #6366F1;
-    --gold: #8B5CF6;
-    --signal: #A855F7;
-    --signal-strong: #C084FC;
-    --on-signal: #09090F;
-    --led: #C084FC;
+    --sub: #05070F;
+    --sub-2: #0A1020;
+    --sub-3: #0F1E3D;
+    --border: #1B2F52;
+    --trace: #101B33;
+    --wire: #60A5FA;
+    --gold: #38BDF8;
+    --signal: #3B82F6;
+    --signal-strong: #BAE6FD;
+    --on-signal: #05070F;
+    --led: #7DD3FC;
     --silk: #F8FAFC;
-    --dim: #A1A1AA;
+    --dim: #94A3B8;
     --chip-fg: #F8FAFC;
     --background: var(--sub);
     --foreground: var(--silk);
@@ -34,7 +34,7 @@
     --accent: var(--sub-3);
     --accent-foreground: var(--silk);
     --destructive: #F87171;
-    --destructive-foreground: #09090F;
+    --destructive-foreground: #05070F;
     --input: var(--border);
     --ring: var(--signal);
     --radius: 4px;
@@ -56,11 +56,11 @@
     min-height: 100vh;
     overflow-x: hidden;
     background-image:
-      radial-gradient(ellipse at 50% -10%, rgba(139, 92, 246, 0.14), transparent 45%),
-      radial-gradient(ellipse at 85% 35%, rgba(99, 102, 241, 0.06), transparent 40%),
-      radial-gradient(ellipse at 10% 75%, rgba(168, 85, 247, 0.05), transparent 45%),
-      linear-gradient(rgba(139, 92, 246, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.045) 1px, transparent 1px);
+      radial-gradient(ellipse at 50% -10%, rgba(59, 130, 246, 0.14), transparent 45%),
+      radial-gradient(ellipse at 85% 35%, rgba(37, 99, 235, 0.06), transparent 40%),
+      radial-gradient(ellipse at 10% 75%, rgba(56, 189, 248, 0.05), transparent 45%),
+      linear-gradient(rgba(59, 130, 246, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.045) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
   }
 
@@ -135,14 +135,14 @@
     border-color: var(--signal);
     background: var(--signal);
     color: var(--on-signal);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.30), 0 0 25px rgba(139, 92, 246, 0.18), 0 0 45px rgba(168, 85, 247, 0.10);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.30), 0 0 25px rgba(59, 130, 246, 0.18), 0 0 45px rgba(56, 189, 248, 0.10);
     transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
   }
 
   .btn-primary:hover {
     background: transparent;
     color: var(--signal-strong);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.30), 0 0 25px rgba(139, 92, 246, 0.18), 0 0 45px rgba(168, 85, 247, 0.10);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.30), 0 0 25px rgba(59, 130, 246, 0.18), 0 0 45px rgba(56, 189, 248, 0.10);
   }
 
   .btn-outline {
@@ -154,7 +154,7 @@
   .btn-outline:hover {
     border-color: var(--signal);
     color: var(--signal-strong);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.20);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.20);
   }
 
   .btn-ghost {
@@ -168,7 +168,7 @@
 
   .outline-text {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(192, 132, 252, 0.32);
+    -webkit-text-stroke: 1px rgba(147, 197, 253, 0.32);
   }
 
   .text-balance {
@@ -195,7 +195,7 @@
   .pin:hover {
     border-color: var(--signal);
     color: var(--signal-strong);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.20);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.20);
   }
 
   .pin .pad {
@@ -209,7 +209,7 @@
   .pin:hover .pad {
     background: var(--signal);
     border-color: var(--signal);
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.45);
   }
 
   .led {
@@ -218,7 +218,7 @@
     height: 6px;
     border-radius: 999px;
     background: var(--signal);
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.45);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.45);
     animation: led 2.4s ease-in-out infinite;
   }
 
@@ -230,7 +230,7 @@
 
   .led-gold {
     background: var(--gold);
-    box-shadow: 0 0 8px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.35);
   }
 
   .bracket {
@@ -242,7 +242,7 @@
   .bracket.panel:hover,
   .bracket.panel:focus-within {
     border-color: color-mix(in srgb, var(--signal) 55%, var(--border));
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.30), 0 0 25px rgba(139, 92, 246, 0.18), 0 0 45px rgba(168, 85, 247, 0.10);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.30), 0 0 25px rgba(59, 130, 246, 0.18), 0 0 45px rgba(56, 189, 248, 0.10);
   }
 
   .bracket::before,
@@ -327,7 +327,7 @@
     opacity: 0;
     background: radial-gradient(
       circle at var(--mx, 50%) var(--my, 50%),
-      rgba(168, 85, 247, 0.14),
+      rgba(56, 189, 248, 0.14),
       transparent 34%
     );
     transition: opacity 300ms ease;
@@ -340,8 +340,8 @@
 
   .hero-grid {
     background-image:
-      linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+      linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
@@ -357,7 +357,7 @@
 
   .contact-input:focus {
     border-color: var(--signal);
-    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.28), 0 0 12px rgba(139, 92, 246, 0.18);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.28), 0 0 12px rgba(59, 130, 246, 0.18);
   }
 
   .marquee {
@@ -372,15 +372,15 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 24px rgba(192, 132, 252, 0.28);
+    text-shadow: 0 0 24px rgba(147, 197, 253, 0.28);
   }
 
   .signal-glow {
-    box-shadow: 0 0 24px rgba(168, 85, 247, 0.20);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.20);
   }
 
   .gold-glow {
-    box-shadow: 0 0 24px rgba(139, 92, 246, 0.16);
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.16);
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -393,8 +393,8 @@
   }
 }
 
-/* Dynamic purple atmosphere — decorative background only */
-.purple-atmosphere {
+/* Dynamic blue atmosphere — decorative background only */
+.blue-atmosphere {
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -402,41 +402,41 @@
   pointer-events: none;
 }
 
-.purple-atmosphere__cloud {
+.blue-atmosphere__cloud {
   position: absolute;
   border-radius: 9999px;
   will-change: transform;
 }
 
-.purple-atmosphere__cloud--one {
+.blue-atmosphere__cloud--one {
   width: 78vw;
   height: 78vw;
   left: -18vw;
   top: -22vw;
   background: radial-gradient(
     circle at center,
-    rgba(139, 92, 246, 0.16),
-    rgba(99, 102, 241, 0.05) 45%,
+    rgba(59, 130, 246, 0.16),
+    rgba(37, 99, 235, 0.05) 45%,
     transparent 72%
   );
-  animation: purple-cloud-drift-a 18s ease-in-out infinite alternate;
+  animation: blue-cloud-drift-a 18s ease-in-out infinite alternate;
 }
 
-.purple-atmosphere__cloud--two {
+.blue-atmosphere__cloud--two {
   width: 62vw;
   height: 62vw;
   right: -16vw;
   bottom: -20vw;
   background: radial-gradient(
     circle at center,
-    rgba(168, 85, 247, 0.13),
-    rgba(99, 102, 241, 0.04) 48%,
+    rgba(56, 189, 248, 0.13),
+    rgba(37, 99, 235, 0.04) 48%,
     transparent 72%
   );
-  animation: purple-cloud-drift-b 24s ease-in-out infinite alternate;
+  animation: blue-cloud-drift-b 24s ease-in-out infinite alternate;
 }
 
-.purple-atmosphere__cloud--three {
+.blue-atmosphere__cloud--three {
   width: 52vw;
   height: 52vw;
   left: 36%;
@@ -444,35 +444,35 @@
   opacity: 0.55;
   background: radial-gradient(
     circle at center,
-    rgba(99, 102, 241, 0.09),
-    rgba(139, 92, 246, 0.03) 50%,
+    rgba(37, 99, 235, 0.09),
+    rgba(59, 130, 246, 0.03) 50%,
     transparent 72%
   );
-  animation: purple-cloud-drift-c 21s ease-in-out infinite alternate;
+  animation: blue-cloud-drift-c 21s ease-in-out infinite alternate;
 }
 
-.purple-atmosphere__particles {
+.blue-atmosphere__particles {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.purple-particle {
+.blue-particle {
   position: absolute;
   border-radius: 9999px;
-  background: #c084fc;
-  box-shadow: 0 0 6px rgba(192, 132, 252, 0.75);
+  background: #7DD3FC;
+  box-shadow: 0 0 6px rgba(147, 197, 253, 0.75);
   opacity: 0.2;
-  animation: purple-particle-rise linear infinite;
+  animation: blue-particle-rise linear infinite;
   will-change: transform, opacity;
 }
 
-.purple-particle--blue {
-  background: #818cf8;
-  box-shadow: 0 0 6px rgba(99, 102, 241, 0.7);
+.blue-particle--blue {
+  background: #38BDF8;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.7);
 }
 
-.purple-atmosphere__canvas {
+.blue-atmosphere__canvas {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -482,7 +482,7 @@
   mix-blend-mode: screen;
 }
 
-@keyframes purple-cloud-drift-a {
+@keyframes blue-cloud-drift-a {
   from {
     transform: translate3d(-2%, -2%, 0) scale(1);
   }
@@ -491,7 +491,7 @@
   }
 }
 
-@keyframes purple-cloud-drift-b {
+@keyframes blue-cloud-drift-b {
   from {
     transform: translate3d(2%, 4%, 0) scale(1.08);
   }
@@ -500,7 +500,7 @@
   }
 }
 
-@keyframes purple-cloud-drift-c {
+@keyframes blue-cloud-drift-c {
   from {
     transform: translate3d(-3%, 1%, 0) scale(1);
   }
@@ -509,7 +509,7 @@
   }
 }
 
-@keyframes purple-particle-rise {
+@keyframes blue-particle-rise {
   0% {
     transform: translate3d(0, 24px, 0);
     opacity: 0;
@@ -539,11 +539,11 @@
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
   }
   50% {
     opacity: 0.55;
-    box-shadow: 0 0 10px 2px rgba(168, 85, 247, 0.18);
+    box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.18);
   }
 }
 
@@ -559,11 +559,11 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .purple-atmosphere__cloud,
-  .purple-particle {
+  .blue-atmosphere__cloud,
+  .blue-particle {
     animation: none !important;
   }
-  .purple-particle {
+  .blue-particle {
     opacity: 0.1;
   }
 }
@@ -572,13 +572,13 @@
   .scanlines::after {
     display: none;
   }
-  .purple-atmosphere__cloud--three {
+  .blue-atmosphere__cloud--three {
     display: none;
   }
-  .purple-atmosphere__particles .purple-particle:nth-child(n + 9) {
+  .blue-atmosphere__particles .blue-particle:nth-child(n + 9) {
     display: none;
   }
-  .purple-atmosphere__canvas {
+  .blue-atmosphere__canvas {
     mix-blend-mode: normal;
   }
 }

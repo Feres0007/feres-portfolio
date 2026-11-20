@@ -32,7 +32,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
               className="absolute inset-0 opacity-70"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px)",
+                  "linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px)",
                 backgroundSize: "18px 18px",
               }}
               aria-hidden="true"

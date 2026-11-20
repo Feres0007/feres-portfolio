@@ -81,7 +81,7 @@ export default function ProjectDialog({
                 {project.impact.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-silk">
                     <span
-                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-signal shadow-[0_0_8px_rgba(168, 85, 247,0.5)]"
+                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-signal shadow-[0_0_8px_rgba(56, 189, 248,0.5)]"
                       aria-hidden="true"
                     />
                     {item}

@@ -34,7 +34,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <article
       className={cn(
-        "bracket panel group relative h-full overflow-hidden transition-colors hover:border-[#8B5CF6]",
+        "bracket panel group relative h-full overflow-hidden transition-colors hover:border-signal",
         className,
       )}
       onMouseMove={handleMove}

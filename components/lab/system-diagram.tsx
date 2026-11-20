@@ -71,13 +71,13 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
           <path
             d={trace}
             fill="none"
-            stroke="#8B5CF6"
+            stroke="#3B82F6"
             strokeWidth="1"
           />
           <path
             d={trace}
             fill="none"
-            stroke="#A855F7"
+            stroke="#7DD3FC"
             strokeWidth="1"
             strokeDasharray="2 6"
             opacity="0.65"
@@ -93,7 +93,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
           y={y - 2}
           width="4"
           height="4"
-          fill="#8B5CF6"
+          fill="#3B82F6"
           opacity="0.8"
         />
       ))}
@@ -107,14 +107,14 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
               y={y}
               width="156"
               height="84"
-              fill="#12101F"
-              stroke="#2A1B4A"
+              fill="#0A1020"
+              stroke="#1B2F52"
             />
-            <rect x={x} y={y} width="3" height="84" fill="#1E1238" />
+            <rect x={x} y={y} width="3" height="84" fill="#101B33" />
             <text
               x={x + 12}
               y={y + 18}
-              fill="#8B5CF6"
+              fill="#3B82F6"
               fontSize="8.8"
               letterSpacing="1.4"
               fontFamily="var(--font-geist-mono)"
@@ -152,21 +152,21 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
             >
               {unit.lines[0]}
             </text>
-            <circle cx={x + 140} cy={y + 14} r="2" fill="#2A1B4A" />
+            <circle cx={x + 140} cy={y + 14} r="2" fill="#1B2F52" />
             {unit.active ? (
-              <circle cx={x + 132} cy={y + 14} r="2" fill="#A855F7" />
+              <circle cx={x + 132} cy={y + 14} r="2" fill="#7DD3FC" />
             ) : null}
           </g>
         )
       })}
 
       <g>
-        <rect x="210" y="168" width="200" height="124" fill="#09090F" stroke="#8B5CF6" />
-        <rect x="210" y="168" width="200" height="3" fill="#A855F7" opacity="0.65" />
+        <rect x="210" y="168" width="200" height="124" fill="#05070F" stroke="#3B82F6" />
+        <rect x="210" y="168" width="200" height="3" fill="#7DD3FC" opacity="0.65" />
         <text
           x="224"
           y="190"
-          fill="#8B5CF6"
+          fill="#3B82F6"
           fontSize="8.8"
           letterSpacing="1.5"
           fontFamily="var(--font-geist-mono)"
@@ -193,11 +193,11 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         >
           {core.meta}
         </text>
-        <line x1="224" y1="248" x2="396" y2="248" stroke="#2A1B4A" />
+        <line x1="224" y1="248" x2="396" y2="248" stroke="#1B2F52" />
         <text
           x="224"
           y="264"
-          fill="#A855F7"
+          fill="#7DD3FC"
           fontSize="8.2"
           letterSpacing="0.7"
           fontFamily="var(--font-geist-mono)"
@@ -207,7 +207,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         <text
           x="224"
           y="278"
-          fill="#A855F7"
+          fill="#7DD3FC"
           fontSize="8.2"
           letterSpacing="0.7"
           fontFamily="var(--font-geist-mono)"
@@ -216,14 +216,14 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         </text>
         {[186, 210, 234, 258, 282].map((cy) => (
           <g key={cy}>
-            <rect x="201" y={cy - 2} width="4" height="4" fill="#8B5CF6" />
-            <rect x="415" y={cy - 2} width="4" height="4" fill="#8B5CF6" />
+            <rect x="201" y={cy - 2} width="4" height="4" fill="#3B82F6" />
+            <rect x="415" y={cy - 2} width="4" height="4" fill="#3B82F6" />
           </g>
         ))}
-        <circle cx="398" cy="178" r="3" fill="#12101F" stroke="#8B5CF6" />
+        <circle cx="398" cy="178" r="3" fill="#0A1020" stroke="#3B82F6" />
       </g>
 
-      <line x1="24" y1="440" x2="596" y2="440" stroke="#2A1B4A" strokeDasharray="2 4" />
+      <line x1="24" y1="440" x2="596" y2="440" stroke="#1B2F52" strokeDasharray="2 4" />
       <text
         x="24"
         y="454"

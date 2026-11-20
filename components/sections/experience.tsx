@@ -49,7 +49,7 @@ export default function Experience() {
                 <Reveal key={entry.company} delay={index * 0.08}>
                   <article className="relative pl-8 md:pl-10">
                     <span
-                      className="absolute left-0 top-7 h-2.5 w-2.5 rounded-full border border-signal bg-ink shadow-[0_0_10px_rgba(168, 85, 247,0.35)]"
+                      className="absolute left-0 top-7 h-2.5 w-2.5 rounded-full border border-signal bg-ink shadow-[0_0_10px_rgba(56, 189, 248,0.35)]"
                       aria-hidden="true"
                     />
 

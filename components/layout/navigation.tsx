@@ -48,7 +48,7 @@ export default function Navigation() {
         >
           <span className="relative grid h-8 w-8 place-items-center border border-wire bg-panel2 font-mono text-[10px] tracking-[0.1em] text-silk transition-colors group-hover:border-signal group-hover:text-signal-strong">
             {profile.initials}
-            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(168, 85, 247,0.6)]" />
+            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(56, 189, 248,0.6)]" />
           </span>
           <span className="hidden sm:block">
             <span className="block text-sm font-medium leading-tight tracking-[-0.02em] text-silk">

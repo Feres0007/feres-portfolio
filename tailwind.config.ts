@@ -85,8 +85,8 @@ const config: Config = {
           to: { height: "0" },
         },
         led: {
-          "0%, 100%": { opacity: "1", boxShadow: "0 0 0 0 rgba(168,85,247,.45)" },
-          "50%": { opacity: ".55", boxShadow: "0 0 10px 2px rgba(168,85,247,.18)" },
+          "0%, 100%": { opacity: "1", boxShadow: "0 0 0 0 rgba(56,189,248,.45)" },
+          "50%": { opacity: ".55", boxShadow: "0 0 10px 2px rgba(56,189,248,.18)" },
         },
         scan: {
           "0%": { transform: "translateY(-100%)" },

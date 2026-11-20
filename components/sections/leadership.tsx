@@ -43,7 +43,7 @@ export default function Leadership() {
                     className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 opacity-40"
                     style={{
                       background:
-                        "radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 68%)",
+                        "radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 68%)",
                     }}
                     aria-hidden="true"
                   />
