@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+# local env files
+.env*.local
+.env
+# vercel
+.vercel
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+# OS
+.DS_Store
+Thumbs.db
