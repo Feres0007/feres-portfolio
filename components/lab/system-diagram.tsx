@@ -47,7 +47,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
       <text
         x="24"
         y="28"
-        fill="#475569"
+        fill="#A1A1AA"
         fontSize="9"
         letterSpacing="1.5"
         fontFamily="var(--font-geist-mono)"
@@ -57,7 +57,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
       <text
         x="596"
         y="28"
-        fill="#475569"
+        fill="#A1A1AA"
         fontSize="9"
         letterSpacing="1.5"
         textAnchor="end"
@@ -71,13 +71,13 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
           <path
             d={trace}
             fill="none"
-            stroke="#1E3A8A"
+            stroke="#8B5CF6"
             strokeWidth="1"
           />
           <path
             d={trace}
             fill="none"
-            stroke="#EA580C"
+            stroke="#A855F7"
             strokeWidth="1"
             strokeDasharray="2 6"
             opacity="0.65"
@@ -93,7 +93,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
           y={y - 2}
           width="4"
           height="4"
-          fill="#1E3A8A"
+          fill="#8B5CF6"
           opacity="0.8"
         />
       ))}
@@ -107,14 +107,14 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
               y={y}
               width="156"
               height="84"
-              fill="#FFFFFF"
-              stroke="#CBD5E1"
+              fill="#12101F"
+              stroke="#2A1B4A"
             />
-            <rect x={x} y={y} width="3" height="84" fill="#DBEAFE" />
+            <rect x={x} y={y} width="3" height="84" fill="#1E1238" />
             <text
               x={x + 12}
               y={y + 18}
-              fill="#1E3A8A"
+              fill="#8B5CF6"
               fontSize="8.8"
               letterSpacing="1.4"
               fontFamily="var(--font-geist-mono)"
@@ -124,7 +124,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
             <text
               x={x + 12}
               y={y + 38}
-              fill="#0F172A"
+              fill="#F8FAFC"
               fontSize="17"
               letterSpacing="1"
               fontFamily="var(--font-geist-mono)"
@@ -134,7 +134,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
             <text
               x={x + 12}
               y={y + 55}
-              fill="#475569"
+              fill="#A1A1AA"
               fontSize="8.2"
               letterSpacing="0.8"
               fontFamily="var(--font-geist-mono)"
@@ -144,7 +144,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
             <text
               x={x + 12}
               y={y + 71}
-              fill="#475569"
+              fill="#A1A1AA"
               fontSize="7.6"
               letterSpacing="0.6"
               opacity="0.7"
@@ -152,21 +152,21 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
             >
               {unit.lines[0]}
             </text>
-            <circle cx={x + 140} cy={y + 14} r="2" fill="#CBD5E1" />
+            <circle cx={x + 140} cy={y + 14} r="2" fill="#2A1B4A" />
             {unit.active ? (
-              <circle cx={x + 132} cy={y + 14} r="2" fill="#EA580C" />
+              <circle cx={x + 132} cy={y + 14} r="2" fill="#A855F7" />
             ) : null}
           </g>
         )
       })}
 
       <g>
-        <rect x="210" y="168" width="200" height="124" fill="#F8FAFC" stroke="#1E3A8A" />
-        <rect x="210" y="168" width="200" height="3" fill="#EA580C" opacity="0.65" />
+        <rect x="210" y="168" width="200" height="124" fill="#09090F" stroke="#8B5CF6" />
+        <rect x="210" y="168" width="200" height="3" fill="#A855F7" opacity="0.65" />
         <text
           x="224"
           y="190"
-          fill="#1E3A8A"
+          fill="#8B5CF6"
           fontSize="8.8"
           letterSpacing="1.5"
           fontFamily="var(--font-geist-mono)"
@@ -176,7 +176,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         <text
           x="224"
           y="218"
-          fill="#0F172A"
+          fill="#F8FAFC"
           fontSize="22"
           letterSpacing="1"
           fontFamily="var(--font-geist-mono)"
@@ -186,18 +186,18 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         <text
           x="224"
           y="236"
-          fill="#475569"
+          fill="#A1A1AA"
           fontSize="8.2"
           letterSpacing="0.8"
           fontFamily="var(--font-geist-mono)"
         >
           {core.meta}
         </text>
-        <line x1="224" y1="248" x2="396" y2="248" stroke="#CBD5E1" />
+        <line x1="224" y1="248" x2="396" y2="248" stroke="#2A1B4A" />
         <text
           x="224"
           y="264"
-          fill="#EA580C"
+          fill="#A855F7"
           fontSize="8.2"
           letterSpacing="0.7"
           fontFamily="var(--font-geist-mono)"
@@ -207,7 +207,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         <text
           x="224"
           y="278"
-          fill="#EA580C"
+          fill="#A855F7"
           fontSize="8.2"
           letterSpacing="0.7"
           fontFamily="var(--font-geist-mono)"
@@ -216,18 +216,18 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
         </text>
         {[186, 210, 234, 258, 282].map((cy) => (
           <g key={cy}>
-            <rect x="201" y={cy - 2} width="4" height="4" fill="#1E3A8A" />
-            <rect x="415" y={cy - 2} width="4" height="4" fill="#1E3A8A" />
+            <rect x="201" y={cy - 2} width="4" height="4" fill="#8B5CF6" />
+            <rect x="415" y={cy - 2} width="4" height="4" fill="#8B5CF6" />
           </g>
         ))}
-        <circle cx="398" cy="178" r="3" fill="#FFFFFF" stroke="#1E3A8A" />
+        <circle cx="398" cy="178" r="3" fill="#12101F" stroke="#8B5CF6" />
       </g>
 
-      <line x1="24" y1="440" x2="596" y2="440" stroke="#CBD5E1" strokeDasharray="2 4" />
+      <line x1="24" y1="440" x2="596" y2="440" stroke="#2A1B4A" strokeDasharray="2 4" />
       <text
         x="24"
         y="454"
-        fill="#475569"
+        fill="#A1A1AA"
         fontSize="8"
         letterSpacing="1"
         fontFamily="var(--font-geist-mono)"
@@ -237,7 +237,7 @@ export default function SystemDiagram({ className }: SystemDiagramProps) {
       <text
         x="596"
         y="454"
-        fill="#475569"
+        fill="#A1A1AA"
         fontSize="8"
         letterSpacing="1"
         textAnchor="end"

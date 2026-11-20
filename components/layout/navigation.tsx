@@ -38,7 +38,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(248,250,252,0.92)] backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(9,9,15,0.92)] backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between gap-4 px-5 lg:px-10">
         <a
           href="#home"
@@ -48,7 +48,7 @@ export default function Navigation() {
         >
           <span className="relative grid h-8 w-8 place-items-center border border-wire bg-panel2 font-mono text-[10px] tracking-[0.1em] text-silk transition-colors group-hover:border-signal group-hover:text-signal-strong">
             {profile.initials}
-            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(234, 88, 12,0.6)]" />
+            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(168, 85, 247,0.6)]" />
           </span>
           <span className="hidden sm:block">
             <span className="block text-sm font-medium leading-tight tracking-[-0.02em] text-silk">
@@ -94,7 +94,7 @@ export default function Navigation() {
           </span>
           <a
             href="#contact"
-            className="hidden h-9 items-center gap-2 border border-signal-strong bg-signal-strong px-4 font-mono text-[9px] uppercase tracking-[0.14em] text-on-signal transition-colors hover:bg-transparent hover:text-signal-strong sm:inline-flex"
+            className="hidden h-9 items-center gap-2 border border-signal bg-signal px-4 font-mono text-[9px] uppercase tracking-[0.14em] text-on-signal transition-colors hover:bg-transparent hover:text-signal-strong sm:inline-flex"
           >
             Let&apos;s talk
             <ArrowUpRight className="h-3 w-3" aria-hidden="true" />

@@ -32,7 +32,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
               className="absolute inset-0 opacity-70"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(30, 58, 138,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138,0.06) 1px, transparent 1px)",
+                  "linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px)",
                 backgroundSize: "18px 18px",
               }}
               aria-hidden="true"
@@ -89,7 +89,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
               <span
                 key={`${width}-${index}`}
                 className="block h-full"
-                style={{ width, backgroundColor: "#0F172A" }}
+                style={{ width, backgroundColor: "#F8FAFC" }}
               />
             ))}
           </div>

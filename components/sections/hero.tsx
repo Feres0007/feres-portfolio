@@ -13,6 +13,7 @@ import Oscilloscope from "@/components/lab/oscilloscope"
 import IdBadge from "@/components/lab/id-badge"
 import TiltPanel from "@/components/lab/tilt-panel"
 import LocalClock from "@/components/lab/local-clock"
+import LightningBackdrop from "@/components/lab/lightning-backdrop"
 
 const container: Variants = {
   hidden: {},
@@ -45,27 +46,30 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 md:pt-32"
     >
-      <div className="absolute inset-0" aria-hidden="true">
-        <PacketCanvas className="opacity-80" />
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <PacketCanvas className="opacity-60" />
       </div>
       <div
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(248,250,252,0.35) 0%, rgba(248,250,252,0.68) 62%, #F8FAFC 100%)",
+            "linear-gradient(180deg, rgba(9,9,15,0.15) 0%, rgba(9,9,15,0.45) 62%, #09090F 100%)",
         }}
         aria-hidden="true"
       />
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <LightningBackdrop />
+      </div>
       <div
-        className="pointer-events-none absolute -right-40 top-1/4 h-[32rem] w-[32rem] rounded-full"
+        className="pointer-events-none absolute -right-40 top-1/4 z-0 h-[32rem] w-[32rem] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(234, 88, 12,0.08), transparent 65%)",
+            "radial-gradient(circle, rgba(168,85,247,0.10), transparent 65%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid w-full max-w-[1500px] gap-12 px-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-10 xl:pr-24">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-12 px-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-10 xl:pr-24">
         <motion.div
           initial={reduceMotion ? false : "hidden"}
           animate="show"

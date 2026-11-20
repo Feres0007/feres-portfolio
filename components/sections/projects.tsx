@@ -75,7 +75,7 @@ export default function Projects() {
                   className={cn(
                     "inline-flex items-center gap-2 border px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] transition-colors",
                     active
-                      ? "border-signal-strong bg-signal-strong text-on-signal"
+                      ? "border-signal bg-signal text-on-signal"
                       : "border-line bg-panel text-dim hover:border-wire hover:text-silk",
                   )}
                 >
