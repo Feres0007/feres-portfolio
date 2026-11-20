@@ -38,7 +38,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(14,17,22,0.88)] backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(248,250,252,0.92)] backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between gap-4 px-5 lg:px-10">
         <a
           href="#home"
@@ -46,9 +46,9 @@ export default function Navigation() {
           className="group flex shrink-0 items-center gap-3"
           aria-label="Feres Boubakri — back to top"
         >
-          <span className="relative grid h-8 w-8 place-items-center border border-wire bg-panel2 font-mono text-[10px] tracking-[0.1em] text-silk transition-colors group-hover:border-signal group-hover:text-signal">
+          <span className="relative grid h-8 w-8 place-items-center border border-wire bg-panel2 font-mono text-[10px] tracking-[0.1em] text-silk transition-colors group-hover:border-signal group-hover:text-signal-strong">
             {profile.initials}
-            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(0,255,157,0.6)]" />
+            <span className="absolute -right-[2px] -top-[2px] h-1 w-1 rounded-full bg-signal shadow-[0_0_8px_rgba(234, 88, 12,0.6)]" />
           </span>
           <span className="hidden sm:block">
             <span className="block text-sm font-medium leading-tight tracking-[-0.02em] text-silk">
@@ -70,7 +70,7 @@ export default function Navigation() {
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "group relative flex h-16 items-center gap-1.5 px-2.5 font-mono text-[9px] uppercase tracking-[0.1em] transition-colors",
-                  isActive ? "text-signal" : "text-dim hover:text-silk",
+                  isActive ? "text-signal-strong" : "text-dim hover:text-silk",
                 )}
               >
                 <span className="text-[7px] text-dim">{item.code}</span>
@@ -94,7 +94,7 @@ export default function Navigation() {
           </span>
           <a
             href="#contact"
-            className="hidden h-9 items-center gap-2 border border-signal bg-signal px-4 font-mono text-[9px] uppercase tracking-[0.14em] text-on-signal transition-colors hover:bg-transparent hover:text-signal sm:inline-flex"
+            className="hidden h-9 items-center gap-2 border border-signal-strong bg-signal-strong px-4 font-mono text-[9px] uppercase tracking-[0.14em] text-on-signal transition-colors hover:bg-transparent hover:text-signal-strong sm:inline-flex"
           >
             Let&apos;s talk
             <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
@@ -102,7 +102,7 @@ export default function Navigation() {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="grid h-9 w-9 place-items-center border border-line text-silk transition-colors hover:border-signal hover:text-signal xl:hidden"
+            className="grid h-9 w-9 place-items-center border border-line text-silk transition-colors hover:border-signal hover:text-signal-strong xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -137,7 +137,7 @@ export default function Navigation() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-center justify-between gap-4 bg-ink px-4 py-3.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors hover:bg-panel",
-                      active === item.id ? "text-signal" : "text-silk",
+                      active === item.id ? "text-signal-strong" : "text-silk",
                     )}
                   >
                     <span className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function Navigation() {
                     <span
                       className={cn(
                         "h-1 w-1 rounded-full",
-                        active === item.id ? "bg-signal" : "bg-wire",
+                        active === item.id ? "bg-signal" : "bg-border",
                       )}
                       aria-hidden="true"
                     />
@@ -158,7 +158,7 @@ export default function Navigation() {
               <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4 font-mono text-[8px] uppercase tracking-[0.14em] text-dim">
                 <a
                   href={`mailto:${profile.email}`}
-                  className="text-silk transition-colors hover:text-signal"
+                  className="text-silk transition-colors hover:text-signal-strong"
                 >
                   {profile.email}
                 </a>

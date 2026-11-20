@@ -82,7 +82,7 @@ export default function BootScreen() {
             className="pointer-events-none absolute inset-0 opacity-60"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(118,230,181,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(118,230,181,0.05) 1px, transparent 1px)",
+                "linear-gradient(rgba(30, 58, 138,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138,0.05) 1px, transparent 1px)",
               backgroundSize: "40px 40px",
             }}
             aria-hidden="true"
@@ -90,7 +90,7 @@ export default function BootScreen() {
           <div className="relative w-full max-w-md border border-line bg-panel">
             <div className="flex items-center justify-between border-b border-line px-4 py-2.5 font-mono text-[8px] uppercase tracking-[0.18em]">
               <span className="text-gold">{profile.board} / BOOT</span>
-              <span className="flex items-center gap-2 text-signal">
+              <span className="flex items-center gap-2 text-signal-strong">
                 <i className="led" aria-hidden="true" />
                 Online
               </span>
@@ -103,7 +103,7 @@ export default function BootScreen() {
               <p className="display mt-2 text-3xl text-silk sm:text-4xl">
                 FERES BOUBAKRI
               </p>
-              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-signal">
+              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-signal-strong">
                 AI × Infrastructure
               </p>
 
@@ -121,7 +121,7 @@ export default function BootScreen() {
                       <span
                         className={
                           done
-                            ? "text-signal"
+                            ? "text-signal-strong"
                             : "text-dim opacity-40"
                         }
                       >
@@ -130,7 +130,7 @@ export default function BootScreen() {
                     </div>
                   )
                 })}
-                <div className="flex items-center gap-2 pt-1 text-signal">
+                <div className="flex items-center gap-2 pt-1 text-signal-strong">
                   <span aria-hidden="true">&gt;</span>
                   <span className="inline-block h-3 w-1.5 animate-blink bg-signal align-middle" />
                 </div>
@@ -149,7 +149,7 @@ export default function BootScreen() {
                 <button
                   type="button"
                   onClick={() => setVisible(false)}
-                  className="text-silk transition-colors hover:text-signal"
+                  className="text-silk transition-colors hover:text-signal-strong"
                 >
                   Skip [Esc]
                 </button>

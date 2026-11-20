@@ -20,7 +20,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
           <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-dim">
             ENIT / ACCESS
           </span>
-          <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-signal">
+          <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-signal-strong">
             <i className="led" aria-hidden="true" />
             Active
           </span>
@@ -32,7 +32,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
               className="absolute inset-0 opacity-70"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(118,230,181,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(118,230,181,0.06) 1px, transparent 1px)",
+                  "linear-gradient(rgba(30, 58, 138,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138,0.06) 1px, transparent 1px)",
                 backgroundSize: "18px 18px",
               }}
               aria-hidden="true"
@@ -89,7 +89,7 @@ export default function IdBadge({ className }: IdBadgeProps) {
               <span
                 key={`${width}-${index}`}
                 className="block h-full"
-                style={{ width, backgroundColor: "#edf7f3" }}
+                style={{ width, backgroundColor: "#0F172A" }}
               />
             ))}
           </div>

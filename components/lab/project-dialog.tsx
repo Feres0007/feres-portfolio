@@ -29,7 +29,7 @@ export default function ProjectDialog({
             <span className="text-gold">{project.index}</span>
             <span className="h-px w-6 bg-line" />
             <span className="text-dim">{project.category}</span>
-            <span className="text-signal">Datasheet</span>
+            <span className="text-signal-strong">Datasheet</span>
           </div>
           <DialogTitle className="display mt-3 text-3xl text-silk md:text-4xl">
             {project.title}
@@ -81,7 +81,7 @@ export default function ProjectDialog({
                 {project.impact.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-silk">
                     <span
-                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-signal shadow-[0_0_8px_rgba(0,255,157,0.5)]"
+                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-signal shadow-[0_0_8px_rgba(234, 88, 12,0.5)]"
                       aria-hidden="true"
                     />
                     {item}
@@ -118,7 +118,7 @@ export default function ProjectDialog({
                   key={item}
                   className="inline-flex items-center gap-1.5 border border-line bg-panel px-2 py-1.5 font-mono text-[9px] text-silk"
                 >
-                  <span className="h-1 w-1 rounded-full bg-wire" aria-hidden="true" />
+                  <span className="h-1 w-1 rounded-full bg-border" aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -140,7 +140,7 @@ export default function ProjectDialog({
                     href={href}
                     target={request ? undefined : "_blank"}
                     rel={request ? undefined : "noreferrer"}
-                    className="group flex items-center justify-between gap-3 border border-line bg-panel px-3 py-2.5 font-mono text-[9px] uppercase tracking-[0.12em] text-silk transition-colors hover:border-signal hover:text-signal"
+                    className="group flex items-center justify-between gap-3 border border-line bg-panel px-3 py-2.5 font-mono text-[9px] uppercase tracking-[0.12em] text-silk transition-colors hover:border-signal hover:text-signal-strong"
                   >
                     <span className="flex items-center gap-2">
                       {request ? (
@@ -150,7 +150,7 @@ export default function ProjectDialog({
                       )}
                       {link.label}
                     </span>
-                    <span className="text-dim transition-colors group-hover:text-signal">
+                    <span className="text-dim transition-colors group-hover:text-signal-strong">
                       {request ? "Email" : "Open"}
                     </span>
                   </a>

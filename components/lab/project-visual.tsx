@@ -7,11 +7,11 @@ type ProjectVisualProps = {
   className?: string
 }
 
-const signal = "#00ff9d"
-const gold = "#00e5ff"
-const dim = "#8ba39d"
-const line = "#29343d"
-const panel = "#161b22"
+const signal = "#EA580C"
+const gold = "#1E3A8A"
+const dim = "#475569"
+const line = "#CBD5E1"
+const panel = "#FFFFFF"
 
 const captions: Record<Project["visual"], string> = {
   rag: "RAG / DOCUMENT GROUNDING",
@@ -67,7 +67,7 @@ function Rag() {
   return (
     <g>
       <rect x="18" y="34" width="64" height="88" fill={panel} stroke={line} />
-      <rect x="24" y="40" width="52" height="10" fill="#0e1116" stroke={line} />
+      <rect x="24" y="40" width="52" height="10" fill="#F8FAFC" stroke={line} />
       <Label x="78" y="47" anchor="end" color={gold} size={5.4}>
         PDF
       </Label>
@@ -82,8 +82,8 @@ function Rag() {
           opacity="0.45"
         />
       ))}
-      <rect x="22" y="76" width="8" height="30" fill="#0e1116" stroke={line} />
-      <rect x="26" y="82" width="6" height="22" fill="#1d2630" stroke={line} />
+      <rect x="22" y="76" width="8" height="30" fill="#F8FAFC" stroke={line} />
+      <rect x="26" y="82" width="6" height="22" fill="#E2E8F0" stroke={line} />
       <Label x="50" y="140" anchor="middle">
         PDF · CSV · XLSX
       </Label>
@@ -94,9 +94,9 @@ function Rag() {
         CHUNKS
       </Label>
 
-      <ellipse cx="153" cy="56" rx="26" ry="6" fill="#0e1116" stroke={line} />
+      <ellipse cx="153" cy="56" rx="26" ry="6" fill="#F8FAFC" stroke={line} />
       <path d="M127 56 V104 A26 6 0 0 0 179 104 V56" fill={panel} stroke={line} />
-      <ellipse cx="153" cy="104" rx="26" ry="6" fill="#0e1116" stroke={line} />
+      <ellipse cx="153" cy="104" rx="26" ry="6" fill="#F8FAFC" stroke={line} />
       <g fill={signal}>
         {[
           [141, 74],
@@ -134,11 +134,11 @@ function Rag() {
           opacity="0.45"
         />
       ))}
-      <rect x="234" y="104" width="24" height="8" fill="#0e1116" stroke={signal} />
+      <rect x="234" y="104" width="24" height="8" fill="#F8FAFC" stroke={signal} />
       <Label x="246" y="109.5" anchor="middle" color={signal} size={4.8}>
         [1]
       </Label>
-      <rect x="262" y="104" width="24" height="8" fill="#0e1116" stroke={gold} />
+      <rect x="262" y="104" width="24" height="8" fill="#F8FAFC" stroke={gold} />
       <Label x="274" y="109.5" anchor="middle" color={gold} size={4.8}>
         [2]
       </Label>
@@ -162,7 +162,7 @@ function Mlops() {
 
   return (
     <g>
-      <rect x="16" y="34" width="92" height="90" fill="#0e1116" stroke={line} />
+      <rect x="16" y="34" width="92" height="90" fill="#F8FAFC" stroke={line} />
       {[50, 66, 82, 98, 114].map((y) => (
         <line key={y} x1="20" y1={y} x2="104" y2={y} stroke={line} opacity="0.4" />
       ))}
@@ -186,7 +186,7 @@ function Mlops() {
               y={42 + index * 15}
               width="54"
               height="11"
-              fill={index === 0 ? "#0e1116" : "#1d2630"}
+              fill={index === 0 ? "#F8FAFC" : "#E2E8F0"}
               stroke={index === 0 ? signal : line}
             />
             <Label
@@ -211,7 +211,7 @@ function Mlops() {
         ENSEMBLE
       </Label>
 
-      <rect x="230" y="34" width="72" height="90" fill="#0e1116" stroke={line} />
+      <rect x="230" y="34" width="72" height="90" fill="#F8FAFC" stroke={line} />
       <path
         d="M242 98 A24 24 0 0 1 290 98"
         fill="none"
@@ -261,12 +261,12 @@ function Eeg() {
 
   return (
     <g>
-      <rect x="18" y="34" width="166" height="70" fill="#0e1116" stroke={line} />
+      <rect x="18" y="34" width="166" height="70" fill="#F8FAFC" stroke={line} />
       <path d={waveA} fill="none" stroke={signal} strokeWidth="1.1" />
       <path d={waveB} fill="none" stroke={gold} strokeWidth="1" opacity="0.8" />
       {[42, 74, 106, 138, 170].map((cx) => (
         <g key={cx}>
-          <circle cx={cx} cy="28" r="2" fill="#1d2630" stroke={line} />
+          <circle cx={cx} cy="28" r="2" fill="#E2E8F0" stroke={line} />
           <line x1={cx} y1="30" x2={cx} y2="34" stroke={line} />
         </g>
       ))}
@@ -298,7 +298,7 @@ function Eeg() {
       <path d="M184 136 H212" stroke={signal} strokeWidth="1" />
       <path d="M212 136 l-4 -2.4 v4.8 z" fill={signal} />
 
-      <rect x="218" y="34" width="84" height="116" fill="#0e1116" stroke={line} />
+      <rect x="218" y="34" width="84" height="116" fill="#F8FAFC" stroke={line} />
       <Label x="260" y="48" anchor="middle" color={gold} size={5.2}>
         CLASS
       </Label>
@@ -315,7 +315,7 @@ function Eeg() {
             y={Number(y)}
             width="48"
             height="8"
-            fill="#1d2630"
+            fill="#E2E8F0"
             stroke={line}
           />
           <rect
@@ -369,7 +369,7 @@ function Microservices() {
         ROUTING
       </Label>
 
-      <rect x="64" y="126" width="66" height="28" fill="#0e1116" stroke={line} />
+      <rect x="64" y="126" width="66" height="28" fill="#F8FAFC" stroke={line} />
       <Label x="97" y="139" anchor="middle" color={gold} size={4.8}>
         DISCOVERY
       </Label>
@@ -399,7 +399,7 @@ function Microservices() {
             stroke={line}
           />
           <circle cx="192" cy={service.y + 11} r="2" fill={signal} opacity="0.8" />
-          <Label x="200" y={service.y + 14} color="#edf7f3" size={5.6}>
+          <Label x="200" y={service.y + 14} color="#0F172A" size={5.6}>
             {service.label}
           </Label>
           <line
@@ -433,7 +433,7 @@ function Cloud() {
       {stages.map((stage, index) => (
         <g key={stage.label}>
           <rect x={stage.x} y="58" width="62" height="58" fill={panel} stroke={line} />
-          <Label x={stage.x + 31} y="76" anchor="middle" color={index === 1 ? signal : "#edf7f3"} size={5.4}>
+          <Label x={stage.x + 31} y="76" anchor="middle" color={index === 1 ? signal : "#0F172A"} size={5.4}>
             {stage.label}
           </Label>
           <line
@@ -459,7 +459,7 @@ function Cloud() {
         </g>
       ))}
 
-      <rect x="236" y="44" width="70" height="86" fill="#0e1116" stroke={signal} />
+      <rect x="236" y="44" width="70" height="86" fill="#F8FAFC" stroke={signal} />
       <Label x="271" y="58" anchor="middle" color={signal} size={5.4}>
         K8S
       </Label>
@@ -481,7 +481,7 @@ function Cloud() {
               y={71 + row * 18}
               width="6"
               height="6"
-              fill={index === 0 ? signal : "#1d2630"}
+              fill={index === 0 ? signal : "#E2E8F0"}
             />
           </g>
         )
@@ -547,7 +547,7 @@ function Network() {
       <path d="M126 96 H152" stroke={gold} strokeWidth="1" strokeDasharray="2 3" />
       <path d="M152 96 l-4 -2.4 v4.8 z" fill={gold} />
 
-      <rect x="156" y="34" width="146" height="118" fill="#0e1116" stroke={line} />
+      <rect x="156" y="34" width="146" height="118" fill="#F8FAFC" stroke={line} />
       <rect x="156" y="34" width="146" height="2" fill={gold} opacity="0.7" />
       <Label x="168" y="50" color={gold} size={5.4}>
         OBSERVE
@@ -571,7 +571,7 @@ function Network() {
             y={Number(y) + 5}
             width="122"
             height="5"
-            fill="#1d2630"
+            fill="#E2E8F0"
             stroke={line}
           />
           <rect
@@ -615,7 +615,7 @@ export default function ProjectVisual({ type, className }: ProjectVisualProps) {
       )}
       style={{
         backgroundImage:
-          "linear-gradient(rgba(118,230,181,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(118,230,181,0.05) 1px, transparent 1px)",
+          "linear-gradient(rgba(30, 58, 138,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 58, 138,0.05) 1px, transparent 1px)",
         backgroundSize: "20px 20px",
       }}
       role="img"

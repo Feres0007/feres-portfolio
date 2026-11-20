@@ -77,7 +77,7 @@ export default function Footer() {
           <div className="mt-4 space-y-3">
             <a
               href={`mailto:${profile.email}`}
-              className="group flex items-start gap-2 text-sm text-silk transition-colors hover:text-signal"
+              className="group flex items-start gap-2 text-sm text-silk transition-colors hover:text-signal-strong"
             >
               <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-dim" aria-hidden="true" />
               <span className="break-all">{profile.email}</span>
@@ -101,7 +101,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-line bg-panel px-3 py-2 font-mono text-[8px] uppercase tracking-[0.14em] text-silk transition-colors hover:border-signal hover:text-signal"
+                  className="border border-line bg-panel px-3 py-2 font-mono text-[8px] uppercase tracking-[0.14em] text-silk transition-colors hover:border-signal hover:text-signal-strong"
                 >
                   {label}
                 </a>
@@ -122,7 +122,7 @@ export default function Footer() {
             <LocalClock />
             <a
               href="#home"
-              className="inline-flex items-center gap-1.5 text-silk transition-colors hover:text-signal"
+              className="inline-flex items-center gap-1.5 text-silk transition-colors hover:text-signal-strong"
             >
               Top
               <ArrowUp className="h-3 w-3" aria-hidden="true" />

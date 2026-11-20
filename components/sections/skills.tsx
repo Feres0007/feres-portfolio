@@ -49,7 +49,7 @@ export default function Skills() {
               Active focus
             </span>
             <span className="inline-flex items-center gap-2">
-              <i className="h-1.5 w-1.5 rounded-full bg-wire" aria-hidden="true" />
+              <i className="h-1.5 w-1.5 rounded-full bg-border" aria-hidden="true" />
               Supporting skill
             </span>
           </div>

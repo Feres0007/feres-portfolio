@@ -86,7 +86,7 @@ export default function Contact() {
           description="Internships, research collaborations or a technical conversation — email is the fastest route. The form prepares a message in your own mail client."
           aside={
             <div className="border-l border-line pl-4">
-              <p className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-signal">
+              <p className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-signal-strong">
                 <i className="led" aria-hidden="true" />
                 Open to opportunities
               </p>
@@ -111,7 +111,7 @@ export default function Contact() {
                   <div className="flex items-start justify-between gap-3">
                     <a
                       href={`mailto:${profile.email}`}
-                      className="break-words transition-colors hover:text-signal"
+                      className="break-words transition-colors hover:text-signal-strong"
                     >
                       {emailUser}@<wbr />
                       {emailDomain}
@@ -119,7 +119,7 @@ export default function Contact() {
                     <CopyButton
                       value={profile.email}
                       label="Email address"
-                      className="grid h-8 w-8 shrink-0 place-items-center border border-line text-dim transition-colors hover:border-signal hover:text-signal"
+                      className="grid h-8 w-8 shrink-0 place-items-center border border-line text-dim transition-colors hover:border-signal hover:text-signal-strong"
                     />
                   </div>
                 </InfoItem>
@@ -128,14 +128,14 @@ export default function Contact() {
                   <div className="flex items-center justify-between gap-3">
                     <a
                       href={`tel:${profile.phone.replace(/\s/g, "")}`}
-                      className="font-mono text-[13px] tracking-[0.05em] transition-colors hover:text-signal"
+                      className="font-mono text-[13px] tracking-[0.05em] transition-colors hover:text-signal-strong"
                     >
                       {profile.phone}
                     </a>
                     <CopyButton
                       value={profile.phone}
                       label="Phone number"
-                      className="grid h-8 w-8 shrink-0 place-items-center border border-line text-dim transition-colors hover:border-signal hover:text-signal"
+                      className="grid h-8 w-8 shrink-0 place-items-center border border-line text-dim transition-colors hover:border-signal hover:text-signal-strong"
                     />
                   </div>
                 </InfoItem>
@@ -150,7 +150,7 @@ export default function Contact() {
                   icon={<ShieldCheck className="h-3.5 w-3.5" />}
                   label="Availability"
                 >
-                  <p className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.08em] text-signal">
+                  <p className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.08em] text-signal-strong">
                     <i className="led" aria-hidden="true" />
                     {profile.availability}
                   </p>
@@ -169,7 +169,7 @@ export default function Contact() {
                         href={href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 border border-line bg-panel2 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-silk transition-colors hover:border-signal hover:text-signal"
+                        className="inline-flex items-center gap-1.5 border border-line bg-panel2 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-silk transition-colors hover:border-signal hover:text-signal-strong"
                       >
                         {label}
                         <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
@@ -267,12 +267,12 @@ export default function Contact() {
               </div>
 
               <div className="mt-5 flex items-start gap-2 border border-line bg-ink px-3 py-2.5">
-                <Check className="mt-0.5 h-3 w-3 shrink-0 text-signal" aria-hidden="true" />
+                <Check className="mt-0.5 h-3 w-3 shrink-0 text-signal-strong" aria-hidden="true" />
                 <p className="font-mono text-[8px] uppercase leading-relaxed tracking-[0.1em] text-dim">
                   Prefer direct email? Use{" "}
                   <a
                     href={`mailto:${profile.email}`}
-                    className="text-silk underline decoration-wire underline-offset-2 transition-colors hover:text-signal"
+                    className="text-silk underline decoration-wire underline-offset-2 transition-colors hover:text-signal-strong"
                   >
                     {profile.email}
                   </a>

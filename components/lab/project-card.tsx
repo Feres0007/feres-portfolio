@@ -34,7 +34,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <article
       className={cn(
-        "bracket panel group relative h-full overflow-hidden transition-colors hover:border-[#24505a]",
+        "bracket panel group relative h-full overflow-hidden transition-colors hover:border-[#1E3A8A]",
         className,
       )}
       onMouseMove={handleMove}
@@ -83,7 +83,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
                 {project.context}
               </p>
             </div>
-            <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors group-hover:text-signal">
+            <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-silk transition-colors group-hover:text-signal-strong">
               Datasheet
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
             </span>

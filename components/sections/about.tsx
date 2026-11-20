@@ -61,7 +61,7 @@ export default function About() {
                 <br />
                 I3C — converged infrastructures
               </p>
-              <p className="mt-3 inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal">
+              <p className="mt-3 inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal-strong">
                 <i className="led" aria-hidden="true" />
                 {profile.availabilityDetail}
               </p>
@@ -117,7 +117,7 @@ export default function About() {
                 <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-dim">
                   System map / U1—U5
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal">
+                <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.14em] text-signal-strong">
                   <i className="led" aria-hidden="true" />
                   Nominal
                 </span>

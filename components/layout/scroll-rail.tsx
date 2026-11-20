@@ -31,8 +31,8 @@ export default function ScrollRail() {
               className={cn(
                 "h-px transition-all duration-300",
                 isActive
-                  ? "w-7 bg-signal shadow-[0_0_8px_rgba(0,255,157,0.4)]"
-                  : "w-3 bg-wire group-hover:w-5 group-hover:bg-signal",
+                  ? "w-7 bg-signal shadow-[0_0_8px_rgba(234, 88, 12,0.4)]"
+                  : "w-3 bg-border group-hover:w-5 group-hover:bg-signal",
               )}
               aria-hidden="true"
             />

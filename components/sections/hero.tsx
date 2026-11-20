@@ -52,7 +52,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(14,17,22,0.32) 0%, rgba(14,17,22,0.55) 62%, #0e1116 100%)",
+            "linear-gradient(180deg, rgba(248,250,252,0.35) 0%, rgba(248,250,252,0.68) 62%, #F8FAFC 100%)",
         }}
         aria-hidden="true"
       />
@@ -60,7 +60,7 @@ export default function Hero() {
         className="pointer-events-none absolute -right-40 top-1/4 h-[32rem] w-[32rem] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,255,157,0.08), transparent 65%)",
+            "radial-gradient(circle, rgba(234, 88, 12,0.08), transparent 65%)",
         }}
         aria-hidden="true"
       />
@@ -75,7 +75,7 @@ export default function Hero() {
             variants={item}
             className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[9px] uppercase tracking-[0.14em]"
           >
-            <span className="inline-flex items-center gap-2 border border-line bg-panel px-2.5 py-1.5 text-signal">
+            <span className="inline-flex items-center gap-2 border border-line bg-panel px-2.5 py-1.5 text-signal-strong">
               <i className="led" aria-hidden="true" />
               {profile.availability}
             </span>
@@ -188,7 +188,7 @@ export default function Hero() {
                 <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-dim">
                   Diagnostics / U1
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-signal">
+                <span className="inline-flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-signal-strong">
                   <i className="led" aria-hidden="true" />
                   Live signal
                 </span>
@@ -223,7 +223,7 @@ export default function Hero() {
 
       <a
         href="#about"
-        className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-dim transition-colors hover:text-signal md:flex"
+        className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[8px] uppercase tracking-[0.22em] text-dim transition-colors hover:text-signal-strong md:flex"
       >
         Scroll
         <ArrowDown className="h-3 w-3 animate-bounce" aria-hidden="true" />
