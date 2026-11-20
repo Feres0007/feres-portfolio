@@ -2,12 +2,14 @@
 
 import { useEffect, useRef } from "react"
 
-// Algorithmic inspiration:
-// - chaseleantj/js-lightning-effect (recursive branching)
-// - Kitolochi/frontend-craft (midpoint displacement)
+// Research inspiration:
+// - kitlangton/psychopomp (stepped leader, return strokes, re-strikes)
+// - LOSXinfinity/Zenitsu (fractal bolt + corona/sheath/core rendering)
+// - diwsi/Javascript-Lightning-Effect (MIT, simple canvas lightning experiment)
 // Original implementation for this project.
 
 type Point = { x: number; y: number }
+type Rng = () => number
 
 type BoltNode = {
   points: Point[]
@@ -20,6 +22,16 @@ type BoltTree = {
   trunk: BoltNode
   origin: Point
   maxY: number
+}
+
+type PhaseKind = "leader" | "gap" | "stroke" | "afterglow"
+
+type Phase = {
+  start: number
+  end: number
+  kind: PhaseKind
+  intensity: number
+  tree: BoltTree
 }
 
 const CONFIG = {
@@ -45,16 +57,12 @@ const CONFIG = {
     skipOuterGlow: true,
     scale: 1.05,
   },
-  revealMin: 140,
-  revealMax: 240,
-  flashMin: 1000,
-  flashMax: 1200,
-  fadeMin: 220,
-  fadeMax: 320,
-  pulsesMin: 2,
-  pulsesMax: 3,
-  secondBoltChance: 0.3,
   roughness: 0.27,
+  leaderDuration: 110,
+  gapDuration: 20,
+  strokeDuration: 240,
+  afterglowDuration: 260,
+  strokeIntensities: [1, 0.9, 0.8],
 } as const
 
 const PARTICLES = [
@@ -74,8 +82,23 @@ const PARTICLES = [
   { x: 73, y: 95, size: 1.5, delay: 1, duration: 24, blue: true },
 ] as const
 
+function mulberry32(seed: number): Rng {
+  let state = seed >>> 0
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0
+    let value = state
+    value = Math.imul(value ^ (value >>> 15), value | 1)
+    value ^= value + Math.imul(value ^ (value >>> 7), value | 61)
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296
+  }
+}
+
 function random(min: number, max: number) {
   return min + Math.random() * (max - min)
+}
+
+function rand(rng: Rng, min: number, max: number) {
+  return min + rng() * (max - min)
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -95,20 +118,21 @@ function midpointPath(
   b: Point,
   roughness: number,
   depth: number,
+  rng: Rng,
 ): Point[] {
   if (depth <= 0) return [a, b]
 
   const dx = b.x - a.x
   const dy = b.y - a.y
   const length = Math.max(Math.hypot(dx, dy), 1)
-  const offset = (Math.random() - 0.5) * roughness * length
+  const offset = (rng() - 0.5) * roughness * length
   const mid: Point = {
     x: (a.x + b.x) / 2 + (-dy / length) * offset,
     y: (a.y + b.y) / 2 + (dx / length) * offset,
   }
 
-  const left = midpointPath(a, mid, roughness * 0.72, depth - 1)
-  const right = midpointPath(mid, b, roughness * 0.72, depth - 1)
+  const left = midpointPath(a, mid, roughness * 0.72, depth - 1, rng)
+  const right = midpointPath(mid, b, roughness * 0.72, depth - 1, rng)
   return [...left.slice(0, -1), ...right]
 }
 
@@ -120,8 +144,9 @@ function createBranch(
   baseWidth: number,
   width: number,
   height: number,
+  rng: Rng,
 ): BoltNode {
-  const angle = Math.PI / 2 + direction * random(0.32, 1.0)
+  const angle = Math.PI / 2 + direction * rand(rng, 0.32, 1.0)
   const rawEnd: Point = {
     x: origin.x + Math.cos(angle) * length,
     y: origin.y + Math.sin(angle) * length,
@@ -132,20 +157,22 @@ function createBranch(
     end,
     CONFIG.roughness * 0.82,
     depth,
+    rng,
   ).map((point) => clampPoint(point, width, height))
 
   const branches: BoltNode[] = []
-  if (depth > 1 && Math.random() < 0.55) {
+  if (depth > 1 && rng() < 0.55) {
     const branchOrigin = points[Math.floor(points.length * 0.6)]
     branches.push(
       createBranch(
         branchOrigin,
-        length * random(0.3, 0.5),
+        length * rand(rng, 0.3, 0.5),
         -direction,
         depth - 1,
         baseWidth * 0.6,
         width,
         height,
+        rng,
       ),
     )
   }
@@ -153,7 +180,7 @@ function createBranch(
   return {
     points,
     width: baseWidth,
-    alpha: random(0.45, 0.7),
+    alpha: rand(rng, 0.45, 0.7),
     branches,
   }
 }
@@ -169,27 +196,32 @@ function maxTreeY(node: BoltNode): number {
   return max
 }
 
-function createBolt(width: number, height: number, mobile: boolean): BoltTree {
+function createBolt(
+  width: number,
+  height: number,
+  mobile: boolean,
+  rng: Rng,
+): BoltTree {
   const cfg = mobile ? CONFIG.mobile : CONFIG.desktop
 
   const start: Point =
-    Math.random() < 0.8
-      ? { x: random(0.08, 0.92) * width, y: random(-70, -10) }
+    rng() < 0.8
+      ? { x: rand(rng, 0.08, 0.92) * width, y: rand(rng, -70, -10) }
       : {
           x:
-            (Math.random() < 0.5
-              ? random(0.02, 0.12)
-              : random(0.88, 0.98)) * width,
-          y: random(0.02, 0.26) * height,
+            (rng() < 0.5
+              ? rand(rng, 0.02, 0.12)
+              : rand(rng, 0.88, 0.98)) * width,
+          y: rand(rng, 0.02, 0.26) * height,
         }
 
   const target: Point = {
     x: clamp(
-      start.x + (Math.random() - 0.5) * width * 0.76,
+      start.x + (rng() - 0.5) * width * 0.76,
       width * 0.04,
       width * 0.96,
     ),
-    y: height * random(0.65, 0.9),
+    y: height * rand(rng, 0.65, 0.9),
   }
 
   const points = midpointPath(
@@ -197,29 +229,71 @@ function createBolt(width: number, height: number, mobile: boolean): BoltTree {
     target,
     CONFIG.roughness,
     cfg.subdivisions,
+    rng,
   ).map((point) => clampPoint(point, width, height))
 
   const trunk: BoltNode = { points, width: 1, alpha: 1, branches: [] }
-  const branchCount = Math.floor(random(cfg.branchMin, cfg.branchMax + 1))
+  const branchCount = Math.floor(rand(rng, cfg.branchMin, cfg.branchMax + 1))
 
   for (let index = 0; index < branchCount; index += 1) {
-    const originIndex = Math.floor(points.length * random(0.15, 0.8))
+    const originIndex = Math.floor(points.length * rand(rng, 0.15, 0.8))
     const origin = points[originIndex]
     const remaining = Math.max(60, target.y - origin.y)
     trunk.branches.push(
       createBranch(
         origin,
-        remaining * random(0.38, 0.65),
-        Math.random() < 0.5 ? 1 : -1,
+        remaining * rand(rng, 0.38, 0.65),
+        rng() < 0.5 ? 1 : -1,
         cfg.branchDepth,
-        random(0.42, 0.62),
+        rand(rng, 0.42, 0.62),
         width,
         height,
+        rng,
       ),
     )
   }
 
   return { trunk, origin: start, maxY: maxTreeY(trunk) }
+}
+
+/** Re-rolls fine detail while keeping the same coarse channel. */
+function refineTree(
+  base: BoltTree,
+  width: number,
+  height: number,
+  detailSeed: number,
+): BoltTree {
+  const rng = mulberry32(detailSeed)
+  const jitter = Math.min(width, height) * 0.012
+
+  function refineNode(node: BoltNode): BoltNode {
+    const last = node.points.length - 1
+    const points = node.points.map((point, index) => {
+      if (index === 0 || index === last) return point
+      return clampPoint(
+        {
+          x: point.x + (rng() - 0.5) * jitter,
+          y: point.y + (rng() - 0.5) * jitter * 0.7,
+        },
+        width,
+        height,
+      )
+    })
+
+    return {
+      points,
+      width: node.width,
+      alpha: clamp(node.alpha * rand(rng, 0.85, 1.15), 0.25, 1),
+      branches: node.branches.map(refineNode),
+    }
+  }
+
+  const trunk = refineNode(base.trunk)
+  return {
+    trunk,
+    origin: base.origin,
+    maxY: maxTreeY(trunk),
+  }
 }
 
 function tracePath(ctx: CanvasRenderingContext2D, points: Point[]) {
@@ -231,7 +305,7 @@ function tracePath(ctx: CanvasRenderingContext2D, points: Point[]) {
   }
 }
 
-/** Multi-layer glow. Called once per strike onto the offscreen canvas. */
+/** Multi-layer glow. Called once per phase onto the offscreen canvas. */
 function renderNode(
   ctx: CanvasRenderingContext2D,
   node: BoltNode,
@@ -331,11 +405,10 @@ export default function PurpleLightningBackground() {
     let raf = 0
     let resizeTimer = 0
 
+    let flashDuration = 0
     let strikeStart = 0
-    let revealDuration = 120
-    let flashDuration = 350
-    let fadeDuration = 180
-    let pulses = 3
+    let phases: Phase[] = []
+    let activePhase = -1
     let origin: Point = { x: 0, y: 0 }
     let maxY = 0
     let trunkPoints: Point[] = []
@@ -352,6 +425,7 @@ export default function PurpleLightningBackground() {
       window.clearTimeout(idleTimer)
       raf = 0
       idleTimer = 0
+      activePhase = -1
       if (width && height) clear()
     }
 
@@ -363,6 +437,7 @@ export default function PurpleLightningBackground() {
     }
 
     function resize() {
+      stop()
       const rect = canvas.getBoundingClientRect()
       if (!rect.width || !rect.height) return
 
@@ -380,6 +455,87 @@ export default function PurpleLightningBackground() {
 
       clear()
       schedule()
+    }
+
+    function buildPhases(base: BoltTree, seed: number) {
+      const list: Phase[] = []
+      let cursor = 0
+
+      list.push({
+        start: cursor,
+        end: cursor + CONFIG.leaderDuration,
+        kind: "leader",
+        intensity: 0.45,
+        tree: base,
+      })
+      cursor += CONFIG.leaderDuration
+
+      list.push({
+        start: cursor,
+        end: cursor + CONFIG.gapDuration,
+        kind: "gap",
+        intensity: 0.05,
+        tree: base,
+      })
+      cursor += CONFIG.gapDuration
+
+      CONFIG.strokeIntensities.forEach((intensity, index) => {
+        const tree = refineTree(base, width, height, seed + (index + 1) * 7919)
+        list.push({
+          start: cursor,
+          end: cursor + CONFIG.strokeDuration,
+          kind: "stroke",
+          intensity,
+          tree,
+        })
+        cursor += CONFIG.strokeDuration
+
+        if (index < CONFIG.strokeIntensities.length - 1) {
+          list.push({
+            start: cursor,
+            end: cursor + CONFIG.gapDuration,
+            kind: "gap",
+            intensity: 0.05,
+            tree,
+          })
+          cursor += CONFIG.gapDuration
+        }
+      })
+
+      list.push({
+        start: cursor,
+        end: cursor + CONFIG.afterglowDuration,
+        kind: "afterglow",
+        intensity: 0.45,
+        tree: base,
+      })
+      cursor += CONFIG.afterglowDuration
+
+      phases = list
+      flashDuration = cursor
+    }
+
+    function renderPhase(phase: Phase) {
+      offCtx.clearRect(0, 0, width, height)
+      offCtx.save()
+      offCtx.globalCompositeOperation = "lighter"
+      offCtx.lineCap = "round"
+      offCtx.lineJoin = "round"
+
+      if (phase.kind !== "gap") {
+        const cfg = config()
+        renderNode(
+          offCtx,
+          phase.tree.trunk,
+          phase.kind === "leader" ? true : cfg.skipOuterGlow,
+          cfg.scale,
+        )
+      }
+      offCtx.restore()
+
+      origin = phase.tree.origin
+      maxY = phase.tree.maxY
+      trunkPoints = phase.tree.trunk.points
     }
 
     function drawAmbient(alpha: number) {
@@ -432,9 +588,17 @@ export default function PurpleLightningBackground() {
       ctx.restore()
     }
 
-    function drawFrame(alpha: number, revealProgress: number, revealY: number) {
+    function drawFrame(
+      alpha: number,
+      revealProgress: number,
+      showLeader: boolean,
+      ambientAlpha: number,
+    ) {
       if (!width || !height) return
       clear()
+
+      const easedReveal = 1 - Math.pow(1 - revealProgress, 3)
+      const revealY = origin.y + (maxY - origin.y) * easedReveal
 
       ctx.save()
       ctx.globalAlpha = clamp(alpha, 0, 1)
@@ -454,8 +618,8 @@ export default function PurpleLightningBackground() {
       }
       ctx.restore()
 
-      if (revealProgress < 1) drawLeader(revealY, alpha)
-      drawAmbient(alpha)
+      if (showLeader) drawLeader(revealY, alpha)
+      drawAmbient(ambientAlpha)
     }
 
     function frame(now: number) {
@@ -466,55 +630,53 @@ export default function PurpleLightningBackground() {
         return
       }
 
-      const progress = elapsed / flashDuration
-      const revealProgress = clamp(elapsed / revealDuration, 0, 1)
-      const easedReveal = 1 - Math.pow(1 - revealProgress, 3)
-      const revealY = origin.y + (maxY - origin.y) * easedReveal
+      let index = phases.findIndex((phase) => elapsed >= phase.start && elapsed < phase.end)
+      if (index < 0) index = phases.length - 1
 
-      const fadeStart = flashDuration - fadeDuration
-      const envelope =
-        elapsed < fadeStart ? 1 : clamp(1 - (elapsed - fadeStart) / fadeDuration, 0, 1)
-      const flicker = 0.72 + 0.28 * Math.abs(Math.sin(progress * Math.PI * pulses))
-      const attack = clamp(elapsed / 28, 0, 1)
-      const alpha = envelope * flicker * attack
+      if (index !== activePhase) {
+        activePhase = index
+        renderPhase(phases[index])
+      }
 
-      drawFrame(alpha, revealProgress, revealY)
+      const phase = phases[index]
+      const phaseElapsed = elapsed - phase.start
+      const local = clamp(phaseElapsed / (phase.end - phase.start), 0, 1)
+
+      let alpha = 0
+      let revealProgress = 1
+      let showLeader = false
+      let ambientAlpha = 0
+
+      if (phase.kind === "leader") {
+        alpha = phase.intensity * (0.55 + 0.45 * local)
+        revealProgress = local
+        showLeader = true
+        ambientAlpha = alpha
+      } else if (phase.kind === "gap") {
+        ambientAlpha = phase.intensity
+      } else if (phase.kind === "stroke") {
+        const attack = clamp(phaseElapsed / 18, 0, 1)
+        const decay = 1 - 0.12 * local
+        const flicker = 0.9 + 0.1 * Math.abs(Math.sin(local * Math.PI * 2))
+        alpha = phase.intensity * decay * flicker * attack
+        ambientAlpha = alpha
+      } else {
+        alpha = phase.intensity * Math.pow(1 - local, 0.65)
+        ambientAlpha = alpha
+      }
+
+      drawFrame(alpha, revealProgress, showLeader, ambientAlpha)
       raf = window.requestAnimationFrame(frame)
     }
 
     function startStrike() {
       if (reducedMotion || document.hidden || !width || !height) return
 
-      const mobile = isMobile()
-      const cfg = config()
-      const bolt = createBolt(width, height, mobile)
-      const secondary =
-        !mobile && Math.random() < CONFIG.secondBoltChance
-          ? createBolt(width, height, false)
-          : null
-
-      offCtx.clearRect(0, 0, width, height)
-      offCtx.save()
-      offCtx.globalCompositeOperation = "lighter"
-      offCtx.lineCap = "round"
-      offCtx.lineJoin = "round"
-      renderNode(offCtx, bolt.trunk, cfg.skipOuterGlow, cfg.scale)
-      if (secondary) {
-        offCtx.globalAlpha = 0.5
-        renderNode(offCtx, secondary.trunk, true, cfg.scale)
-      }
-      offCtx.restore()
-
-      origin = bolt.origin
-      maxY = bolt.maxY
-      trunkPoints = bolt.trunk.points
-
-      revealDuration = random(CONFIG.revealMin, CONFIG.revealMax)
-      flashDuration = random(CONFIG.flashMin, CONFIG.flashMax)
-      const availableFade = Math.max(60, flashDuration - revealDuration)
-      fadeDuration = Math.min(random(CONFIG.fadeMin, CONFIG.fadeMax), availableFade)
-      pulses = Math.floor(random(CONFIG.pulsesMin, CONFIG.pulsesMax + 1))
+      const seed = Math.floor(Math.random() * 0xffffffff)
+      const base = createBolt(width, height, isMobile(), mulberry32(seed))
+      buildPhases(base, seed)
       strikeStart = performance.now()
+      activePhase = -1
 
       raf = window.requestAnimationFrame(frame)
     }
