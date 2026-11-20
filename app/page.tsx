@@ -45,7 +45,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main id="main">
+      <main id="main" className="relative z-10">
         <Hero />
         <About />
         <Skills />

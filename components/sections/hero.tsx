@@ -13,7 +13,6 @@ import Oscilloscope from "@/components/lab/oscilloscope"
 import IdBadge from "@/components/lab/id-badge"
 import TiltPanel from "@/components/lab/tilt-panel"
 import LocalClock from "@/components/lab/local-clock"
-import LightningBackdrop from "@/components/lab/lightning-backdrop"
 
 const container: Variants = {
   hidden: {},
@@ -47,19 +46,16 @@ export default function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 md:pt-32"
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-        <PacketCanvas className="opacity-60" />
+        <PacketCanvas className="opacity-45" />
       </div>
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(9,9,15,0.15) 0%, rgba(9,9,15,0.45) 62%, #09090F 100%)",
+            "linear-gradient(180deg, rgba(9,9,15,0.02) 0%, rgba(9,9,15,0.22) 55%, rgba(9,9,15,0.72) 88%, #09090F 100%)",
         }}
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
-        <LightningBackdrop />
-      </div>
       <div
         className="pointer-events-none absolute -right-40 top-1/4 z-0 h-[32rem] w-[32rem] rounded-full"
         style={{

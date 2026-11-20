@@ -9,6 +9,7 @@ import Footer from "@/components/layout/footer"
 import BootScreen from "@/components/layout/boot-screen"
 import ScrollRail from "@/components/layout/scroll-rail"
 import Crosshair from "@/components/layout/crosshair"
+import PurpleLightningBackground from "@/components/lab/purple-lightning-background"
 import { Toaster } from "@/components/ui/toaster"
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
@@ -75,6 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="scanlines font-sans">
+        <PurpleLightningBackground />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border focus:border-signal focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:text-silk"

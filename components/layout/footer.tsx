@@ -10,7 +10,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-ink">
+    <footer className="relative z-10 overflow-hidden border-t border-line bg-ink">
       <div className="relative overflow-hidden border-b border-line py-7">
         <div className="marquee flex w-max items-center gap-10 whitespace-nowrap" aria-hidden="true">
           {Array.from({ length: 8 }).map((_, index) => (
